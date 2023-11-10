@@ -1,0 +1,22 @@
+:root {
+  font-family: Roboto, Helvetica Neue, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* --backgroundColor: #ebf0f6;
+  --backgroundBoxColor: #ffffff;
+  --boxTextColor: #506466;
+  --btnColor: #294977;
+  --boxTextColor: ;
+  --btnTextColor: ;
+  --resetHoverColor: #4778bf;
+  --headerColor: #7587a4; */
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+

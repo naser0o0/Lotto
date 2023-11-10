@@ -1,0 +1,43 @@
+.wrapper-delete-btn {
+  display: flex;
+  align-items: center;
+  color: var(--btnColor);
+  font-size: 16px;
+  height: 4rem;
+}
+
+.btn-hover:hover {
+  /* color: blueviolet; */
+}
+
+.delete-btn-inactive {
+  cursor: not-allowed;
+  background-color: transparent;
+  border: none;
+
+}
+
+.delete-btn-active {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.delete-btn-active:hover .trashIcon {
+  color: var(--resetHoverColor);
+}
+
+.delete-btn-active:hover .btn-hover {
+  color: var(--resetHoverColor);
+}
+
+.delete-btn-active:focus {
+  border: none;
+}
+
+
+.trashIcon {
+  color: var(--btnColor);
+  height: 1.25em;
+  width: 1.25em;
+}
