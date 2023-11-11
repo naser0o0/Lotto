@@ -2,6 +2,7 @@ import { useState } from "react";
 import DeleteBtn from "./components/DeleteBtn";
 import NextBtn from "./components/NextBtn";
 import Zufall from "./components/Zufall";
+import Boxes from "./components/Boxes";
 import "./lottoFeld.css";
 
 const numRows = 7;
@@ -49,49 +50,7 @@ export default function LottoFeld() {
       setCursorStyle("no-drop");
     };
 
-  const boxes = Array.from({ length: totalBoxes }, (_, i) => {
-    const boxNumber = i + 1;
-
-    //     const boxes = [...Array(totalBoxes)].map((_, i) => {
-    //   const boxNumber = i + 1;
-
-    //---- .includes() Methode gibt einen Booleschen Wert zurück -----
-    const isSelected = selectedBoxes.includes(boxNumber);
-
-    return (
-      <div
-        key={boxNumber}
-        className={`box ${isSelected ? "selected" : ""}`}
-        onClick={() => handleBoxClick(boxNumber)}
-        style={{ cursor: cursorStyle }}
-      >
-        {isSelected ? (
-          <img
-            src="./public/icon-cross.svg"
-            alt="cross"
-            className={isSelected ? "icon-cross" : "icon-cross-inactive"}
-            style={{ color: "#fffff", cursor: "pointer" }}
-          />
-        ) : (
-          <span
-            style={{
-              animation:
-                selectedBoxes.length <= maxSelectedBoxes
-                  ? "number-inactive 0.3s"
-                  : "none",
-            }}
-            className={
-              selectedBoxes.length === maxSelectedBoxes
-                ? "low-opacity-active"
-                : "low-opacity-inactive number-inactive"
-            }
-          >
-            {boxNumber}
-          </span>
-        )}
-      </div>
-    );
-  });
+  
 
   return (
     <section className="game-section">
@@ -104,7 +63,13 @@ export default function LottoFeld() {
             </h3>
 
             <div className="number-grid" style={{ cursor: cursorStyle }}>
-              {boxes}
+              <Boxes
+                totalBoxes={totalBoxes}
+                selectedBoxes={selectedBoxes}
+                handleBoxClick={handleBoxClick}
+                cursorStyle={cursorStyle}
+                maxSelectedBoxes={maxSelectedBoxes}
+              />
             </div>
             <div className="delete-btn-container">
               <DeleteBtn

@@ -1,39 +1,58 @@
-import "../LottoFelder.css";
+import "../LottoFeld.css";
+// BoxGrid.js
 
 
 export default function Boxes({
-  totalBoxes, selectedBoxes, maxSelectedBoxes, cursorStyle, handleBoxClick, newSelectedBoxes
   totalBoxes,
-  handleBoxClick,
-  handleReset,
-  setSelectedBoxes,
   selectedBoxes,
+  handleBoxClick,
+  cursorStyle,
+  maxSelectedBoxes,
 }) {
-  const boxes = Array.from({ length: totalBoxes }, (_, i) => {
-    const boxNumber = i + 1;
-    //---- .has() mehtode return bolien -----
-    const isSelected = selectedBoxes.has(boxNumber);
+  return (
+    <div className="number-grid" style={{ cursor: cursorStyle }}>
+      {Array.from({ length: totalBoxes }, (_, i) => {
+        const boxNumber = i + 1;
+        //     const boxes = [...Array(totalBoxes)].map((_, i) => {
+        //   const boxNumber = i + 1;
 
-    return (
-      <div
-        key={boxNumber}
-        className={`box ${isSelected ? "selected" : ""}`}
-        onClick={() => handleBoxClick(boxNumber)}
-        style={{ cursor: cursorStyle }}
-      >
-        {isSelected ? (
-          <img
-            src="./public/icon-cross.svg"
-            alt="cross"
-            className="icon-cross"
-            style={{ background: "#ffffff" }}
-          />
-        ) : (
-          { boxNumber }
-        )}
-      </div>
-    );
-  });
+        //---- .includes() Methode gibt einen Booleschen Wert zurück -----
+        const isSelected = selectedBoxes.includes(boxNumber);
 
-  return <>{boxes}</>;
+        return (
+          <div
+            key={boxNumber}
+            className={`box ${isSelected ? "selected" : ""}`}
+            onClick={() => handleBoxClick(boxNumber)}
+            style={{ cursor: cursorStyle }}
+          >
+            {isSelected ? (
+              <img
+                src="./public/icon-cross.svg"
+                alt="cross"
+                className={isSelected ? "icon-cross" : "icon-cross-inactive"}
+                style={{ color: "#fffff", cursor: "pointer" }}
+              />
+            ) : (
+              <span
+                style={{
+                  animation:
+                    selectedBoxes.length <= maxSelectedBoxes
+                      ? "number-inactive 0.3s"
+                      : "none",
+                }}
+                className={
+                  selectedBoxes.length === maxSelectedBoxes
+                    ? "low-opacity-active"
+                    : "low-opacity-inactive number-inactive"
+                }
+              >
+                {boxNumber}
+              </span>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
 }
