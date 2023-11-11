@@ -2,7 +2,12 @@ import { LiaDiceThreeSolid } from "react-icons/lia";
 import "./Zufall.css";
 
 
-export default function Zufall() {
+export default function Zufall({ handleRandomSelection }) {
+  const handleZufallClick = () => {
+    // Hier wird die Funktion handleRandomSelection aufgerufen,
+    // um sechs zufällige Boxen auszuwählen
+    handleRandomSelection();
+  };
   return (
     <div className="zufall-container">
       <h3 className="zufall-header">Quick-Tipps</h3>
@@ -13,9 +18,9 @@ export default function Zufall() {
       </p>
       <div className="zufall-btn-wrapper">
         <div className="zufall-item">
-          <button className="zufall-btn">
-              <LiaDiceThreeSolid className="zufall-icon" />
-              <span className="zufall-btn-text">Zufall</span>
+          <button className="zufall-btn" onClick={handleZufallClick}>
+            <LiaDiceThreeSolid className="zufall-icon" />
+            <span className="zufall-btn-text">Zufall</span>
           </button>
         </div>
       </div>

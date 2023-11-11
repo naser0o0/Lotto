@@ -34,6 +34,21 @@ export default function LottoFeld() {
     setCursorStyle("pointer");
   };
 
+    const handleRandomSelection = () => {
+      const randomBoxes = [];
+
+      while (randomBoxes.length < maxSelectedBoxes) {
+        const randomBox = Math.floor(Math.random() * totalBoxes) + 1;
+
+        if (!randomBoxes.includes(randomBox)) {
+          randomBoxes.push(randomBox);
+        }
+      }
+
+      setSelectedBoxes(randomBoxes);
+      setCursorStyle("no-drop");
+    };
+
   const boxes = Array.from({ length: totalBoxes }, (_, i) => {
     const boxNumber = i + 1;
 
@@ -101,7 +116,7 @@ export default function LottoFeld() {
         </div>
         <div className="nex-btn-feld">
           <div className="zufall">
-            <Zufall />
+            <Zufall handleRandomSelection={handleRandomSelection} />
           </div>
           <div className="nextBtn">
             <NextBtn
