@@ -1,4 +1,4 @@
-import "../LottoFeld.css";
+import "./Boxes.css";
 // BoxGrid.js
 
 
@@ -10,7 +10,7 @@ export default function Boxes({
   maxSelectedBoxes,
 }) {
   return (
-    <div className="number-grid" style={{ cursor: cursorStyle }}>
+    <div className="grid-container" style={{ cursor: cursorStyle }}>
       {Array.from({ length: totalBoxes }, (_, i) => {
         const boxNumber = i + 1;
         //     const boxes = [...Array(totalBoxes)].map((_, i) => {

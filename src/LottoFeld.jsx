@@ -61,8 +61,8 @@ export default function LottoFeld() {
               <span>Ihr Spielfeld</span>
               <span>1 von 12</span>
             </h3>
-
-            <div className="number-grid" style={{ cursor: cursorStyle }}>
+     
+            {/* <div className="number-grid" style={{ border: "solid red" }}> */}
               <Boxes
                 totalBoxes={totalBoxes}
                 selectedBoxes={selectedBoxes}
@@ -70,7 +70,7 @@ export default function LottoFeld() {
                 cursorStyle={cursorStyle}
                 maxSelectedBoxes={maxSelectedBoxes}
               />
-            </div>
+            {/* </div> */}
             <div className="delete-btn-container">
               <DeleteBtn
                 handleClick={handleReset}

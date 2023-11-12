@@ -1,0 +1,70 @@
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.box {
+  width: 65px;
+  height: 65px;
+  background-color: var(--backgroundBoxColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4px;
+  border-radius: 8px;
+  border: hidden;
+  font-size: 1.3rem;
+  color: var(boxTextColor);
+  /* cursor: pointer; */
+}
+
+/*-- Animation: Cross --*/
+@keyframes icon-cross {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.icon-cross {
+  border-radius: 5px;
+  opacity: 0.7;
+  animation: icon-cross 0.3s;
+  background: "#ffffff";
+  /* cursor: "pointer" ; */
+}
+
+@keyframes icon-cross-inactive {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.icon-cross-inactive {
+  border-radius: 5px;
+  opacity: 0.7;
+  animation: icon-cross-inactive 0.3s;
+}
+
+/*-- Animation and Opacity boxNumber -- */
+.low-opacity-active {
+  opacity: 0.3;
+  transition: 0.3s;
+}
+.low-opacity-inactive {
+  transition: 0.3s;
+}
+
+@keyframes number-inactive {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
