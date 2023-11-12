@@ -3,11 +3,11 @@ import "./Zufall.css";
 
 
 export default function Zufall({ handleRandomSelection }) {
+  
   const handleZufallClick = () => {
-    // Hier wird die Funktion handleRandomSelection aufgerufen,
-    // um sechs zufällige Boxen auszuwählen
     handleRandomSelection();
   };
+
   return (
     <div className="zufall-container">
       <h3 className="zufall-header">Quick-Tipps</h3>

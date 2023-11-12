@@ -29,29 +29,27 @@ export default function LottoFeld() {
     );
   };
 
-    const fillPercentage = (selectedBoxes.length / maxSelectedBoxes) * 100;
+  const fillPercentage = (selectedBoxes.length / maxSelectedBoxes) * 100;
 
   const handleReset = () => {
     setSelectedBoxes([]);
     setCursorStyle("pointer");
   };
 
-    const handleRandomSelection = () => {
-      const randomBoxes = [];
+  const handleRandomSelection = () => {
+    const randomBoxes = [];
 
-      while (randomBoxes.length < maxSelectedBoxes) {
-        const randomBox = Math.floor(Math.random() * totalBoxes) + 1;
+    while (randomBoxes.length < maxSelectedBoxes) {
+      const randomBox = Math.floor(Math.random() * totalBoxes) + 1;
 
-        if (!randomBoxes.includes(randomBox)) {
-          randomBoxes.push(randomBox);
-        }
+      if (!randomBoxes.includes(randomBox)) {
+        randomBoxes.push(randomBox);
       }
+    }
 
-      setSelectedBoxes(randomBoxes);
-      setCursorStyle("no-drop");
-    };
-
-  
+    setSelectedBoxes(randomBoxes);
+    setCursorStyle("no-drop");
+  };
 
   return (
     <section className="game-section">
