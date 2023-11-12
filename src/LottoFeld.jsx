@@ -12,7 +12,6 @@ const totalBoxes = numRows * numCols;
 
 export default function LottoFeld() {
   const [selectedBoxes, setSelectedBoxes] = useState([]);
-
   const [cursorStyle, setCursorStyle] = useState("pointer");
 
   const handleBoxClick = (clickedBoxNumber) => {
@@ -29,6 +28,8 @@ export default function LottoFeld() {
       newSelectedBoxes.length === maxSelectedBoxes ? "no-drop" : "pointer"
     );
   };
+
+    const fillPercentage = (selectedBoxes.length / maxSelectedBoxes) * 100;
 
   const handleReset = () => {
     setSelectedBoxes([]);
@@ -61,15 +62,15 @@ export default function LottoFeld() {
               <span>Ihr Spielfeld</span>
               <span>1 von 12</span>
             </h3>
-     
+
             {/* <div className="number-grid" style={{ border: "solid red" }}> */}
-              <Boxes
-                totalBoxes={totalBoxes}
-                selectedBoxes={selectedBoxes}
-                handleBoxClick={handleBoxClick}
-                cursorStyle={cursorStyle}
-                maxSelectedBoxes={maxSelectedBoxes}
-              />
+            <Boxes
+              totalBoxes={totalBoxes}
+              selectedBoxes={selectedBoxes}
+              handleBoxClick={handleBoxClick}
+              cursorStyle={cursorStyle}
+              maxSelectedBoxes={maxSelectedBoxes}
+            />
             {/* </div> */}
             <div className="delete-btn-container">
               <DeleteBtn
@@ -88,6 +89,7 @@ export default function LottoFeld() {
               handleNextClick={handleReset}
               selectedBoxes={selectedBoxes}
               maxSelectedBoxes={maxSelectedBoxes}
+              fillPercentage={fillPercentage}
             />
           </div>
         </div>

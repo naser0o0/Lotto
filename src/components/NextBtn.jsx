@@ -5,6 +5,7 @@ export default function NextBtn({
   handleNextClick,
   selectedBoxes,
   maxSelectedBoxes,
+  fillPercentage,
 }) {
   const isBtnActive = selectedBoxes.length === maxSelectedBoxes;
 
@@ -19,7 +20,7 @@ export default function NextBtn({
         disabled={selectedBoxes.length !== maxSelectedBoxes}
       >
         <span
-          className="wrapper-next-btn"
+          className="wrapper-text-btn"
           style={{ cursor: isBtnActive ? "pointer" : "" }}
         >
           <span className="next-btn-text">Weiter zum 2. Feld</span>
@@ -30,6 +31,7 @@ export default function NextBtn({
                 ? "next-btn-active"
                 : "next-btn-inactive next-btn-back"
             }
+            style={{ width: `${fillPercentage}%` }} 
           ></span>
         </span>
       </button>

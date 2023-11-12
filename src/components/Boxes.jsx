@@ -22,7 +22,8 @@ export default function Boxes({
         return (
           <div
             key={boxNumber}
-            className={`box ${isSelected ? "selected" : ""}`}
+            className="box"
+            // className={`box ${isSelected ? "selected" : ""}`}
             onClick={() => handleBoxClick(boxNumber)}
             style={{ cursor: cursorStyle }}
           >
