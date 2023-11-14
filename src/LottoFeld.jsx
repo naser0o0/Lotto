@@ -15,20 +15,28 @@ export default function LottoFeld() {
   const [cursorStyle, setCursorStyle] = useState("pointer");
 
   const handleBoxClick = (clickedBoxNumber) => {
+    // const newSelectedBoxes = [...selectedBoxes];: Ein neues Array newSelectedBoxes wird erstellt, 
+    // das eine Kopie des aktuellen selectedBoxes-Arrays darstellt. 
+    // Dies wird gemacht, um die Unveränderlichkeit zu wahren und Änderungen an einem Klon 
+    // des Arrays vorzunehmen.
     const newSelectedBoxes = [...selectedBoxes];
-
+    //  Überprüfung, ob die geklickte Kistennummer bereits im newSelectedBoxes-Array vorhanden ist
     if (newSelectedBoxes.includes(clickedBoxNumber)) {
+      // Wenn ja, wird die Kistennummer aus dem Array entfernt (splice wird verwendet, um das Element zu entfernen).
       newSelectedBoxes.splice(newSelectedBoxes.indexOf(clickedBoxNumber), 1);
+      // Wenn nein und die Anzahl der ausgewählten Kisten kleiner als maxSelectedBoxes ist, wird die Kistennummer zum Array hinzugefügt.
     } else if (newSelectedBoxes.length < maxSelectedBoxes) {
+      //  Das selectedBoxes-State wird mit dem aktualisierten Array newSelectedBoxes aktualisiert.
       newSelectedBoxes.push(clickedBoxNumber);
     }
-
     setSelectedBoxes(newSelectedBoxes);
+
     setCursorStyle(
       newSelectedBoxes.length === maxSelectedBoxes ? "no-drop" : "pointer"
     );
   };
-
+  // Dieser Ausdruck berechnet das Verhältnis der Anzahl der ausgewählten Kisten zur maximal zulässigen Anzahl
+  // * 100: Multiplikation mit 100 wird durchgeführt, um das Verhältnis in Prozent umzuwandeln.
   const fillPercentage = (selectedBoxes.length / maxSelectedBoxes) * 100;
 
   const handleReset = () => {
@@ -38,10 +46,14 @@ export default function LottoFeld() {
 
   const handleRandomSelection = () => {
     const randomBoxes = [];
-
+    // while-Schleife wird verwendet, um zufällige Kisten auszuwählen,
     while (randomBoxes.length < maxSelectedBoxes) {
+      // Eine zufällige Kistennummer wird generiert. Math.random() gibt eine zufällige Dezimalzahl zwischen 0 (inklusive) und 1 (ausschließlich) zurück. 
+      // Durch Multiplikation mit totalBoxes wird dieser Wert in den Bereich von 0 bis totalBoxes skaliert. 
+      // Math.floor rundet dann die Dezimalzahl auf die nächstkleinere ganze Zahl ab, und + 1 wird hinzugefügt,
+      // um sicherzustellen, dass die Kistennummer im Bereich von 1 bis totalBoxes liegt.
       const randomBox = Math.floor(Math.random() * totalBoxes) + 1;
-
+      // Überprüfung, ob die generierte Kistennummer bereits in randomBoxes enthalten ist. Wenn nicht, wird die Kistennummer zum Array hinzugefügt.
       if (!randomBoxes.includes(randomBox)) {
         randomBoxes.push(randomBox);
       }
