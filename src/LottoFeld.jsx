@@ -3,7 +3,7 @@ import DeleteBtn from "./components/DeleteBtn";
 import NextBtn from "./components/NextBtn";
 import Zufall from "./components/Zufall";
 import Boxes from "./components/Boxes";
-import "./lottoFeld.css";
+import "./LottoFeld.css";
 
 const numRows = 7;
 const numCols = 7;
